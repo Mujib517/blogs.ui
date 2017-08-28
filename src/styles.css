@@ -2,3 +2,6 @@
 .red{
     background-color:red;
 }
+.border{
+    border:3px solid black;
+}
