@@ -1,7 +1,15 @@
 <h1>Blogs</h1>
 
-<div class="col-md-5">
+<!--<div class="col-md-5">
   <div class="well" *ngFor="let blog of blogs">
     <app-blog [blog]="blog"></app-blog>
+  </div>
+</div>-->
+
+
+<div class="col-md-5">
+  <div class="well" *ngFor="let user of users">
+    <h3>{{user.login}}</h3>
+    <img class="img img-circle" [src]="user.avatar_url" width="150" height="150" />
   </div>
 </div>

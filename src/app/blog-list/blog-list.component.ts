@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlogService } from "../shared/blog.service";
 
 @Component({
@@ -6,14 +6,31 @@ import { BlogService } from "../shared/blog.service";
   templateUrl: './blog-list.component.html'
 })
 export class BlogListComponent implements OnInit {
-  blogs: Array<any>;
+  blogs: Array<any> = [];
+
+  users: Array<any> = [];
+
+  // private service: BlogService;
+  // //dependency injection
+  // constructor(service: BlogService) {
+  //   this.service = service;
+  // }
+
+  constructor(private service: BlogService) { }
 
   ngOnInit() {
-    let service = new BlogService();
-    this.blogs = service.get();
-  }
+    // this.blogs = this.service.get();
 
-  constructor() {}
-  
+    // this.service.get()
+    //   .subscribe(this.next, this.failed, this.complete);
+
+
+    this.service.get()
+      .subscribe(response => this.users = response.json(), err => console.log(err));
+  }
 }
+
+
+
+
 
