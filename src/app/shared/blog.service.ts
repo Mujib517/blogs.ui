@@ -6,7 +6,8 @@ export class BlogService {
 
     constructor(private http: Http) { }
 
-    get() {
-        return this.http.get('https://api.github.com/users');
+    get(pageIndex: number, pageSize: number) {
+        // return this.http.get('http://localhost:3000/blogs/' + pageIndex + '/' + pageSize);
+        return this.http.get(`http://localhost:3000/blogs/${pageIndex}/${pageSize}`);
     }
 }

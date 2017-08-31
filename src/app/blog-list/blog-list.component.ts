@@ -7,27 +7,43 @@ import { BlogService } from "../shared/blog.service";
 })
 export class BlogListComponent implements OnInit {
   blogs: Array<any> = [];
-
-  users: Array<any> = [];
-
-  // private service: BlogService;
-  // //dependency injection
-  // constructor(service: BlogService) {
-  //   this.service = service;
-  // }
+  metadata: any;
+  failed: boolean = false;
+  pageIndex: number = 0;
+  pageSize: number = 10;
 
   constructor(private service: BlogService) { }
 
   ngOnInit() {
-    // this.blogs = this.service.get();
-
-    // this.service.get()
-    //   .subscribe(this.next, this.failed, this.complete);
-
-
-    this.service.get()
-      .subscribe(response => this.users = response.json(), err => console.log(err));
+    this.getBlogs();
   }
+
+  next() {
+    // if (this.pageIndex >= this.metadata.pages - 1) return;
+    this.pageIndex++;
+    this.getBlogs();
+  }
+
+  prev() {
+    if (this.pageIndex == 0) return;
+    this.pageIndex--;
+    this.getBlogs();
+  }
+
+  private getBlogs() {
+    this.service.get(this.pageIndex, this.pageSize)
+      .subscribe(response => {
+        let result = response.json();
+        this.blogs = result.data;
+        this.metadata = result.metadata;
+      },
+      err => this.failed = true);
+  }
+
+  disableNext() {
+    this.pageIndex >= this.metadata.pages - 1;
+  }
+
 }
 
 

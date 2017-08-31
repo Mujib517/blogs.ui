@@ -5,7 +5,7 @@ import { Component,Input } from '@angular/core';
     template: `<div>
        <h3>{{blog.title}}</h3>
        <p>{{blog.content}}</p>
-       <div>IsPublished: <input type="checkbox" [(ngModel)]="blog.isPublished"/></div>
+       <div>IsPublished: <input type="checkbox" [(ngModel)]="blog.published"/></div>
     `
 })
 export class BlogComponent {
