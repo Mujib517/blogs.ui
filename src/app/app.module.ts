@@ -9,10 +9,12 @@ import { AboutComponent } from './about/about.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogService } from "./shared/blog.service";
+import { TimePipe } from "./shared/time.pipe";
+
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpModule],
-    declarations: [AppComponent, HomeComponent, AboutComponent, BlogListComponent, BlogComponent],
+    declarations: [AppComponent, HomeComponent, AboutComponent, BlogListComponent, BlogComponent,TimePipe],
     bootstrap: [AppComponent],
     providers: [BlogService]
 })

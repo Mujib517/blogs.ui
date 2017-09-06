@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from "../shared/blog.service";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: 'app-blog-list',
@@ -11,10 +12,14 @@ export class BlogListComponent implements OnInit {
   failed: boolean = false;
   pageIndex: number = 0;
   pageSize: number = 10;
+  blog: any;
+  saveFailed: boolean = false;
+  saveSuccess: boolean = false;
 
   constructor(private service: BlogService) { }
 
   ngOnInit() {
+    this.blog = {};
     this.getBlogs();
   }
 
@@ -30,6 +35,25 @@ export class BlogListComponent implements OnInit {
     this.getBlogs();
   }
 
+  onSave(form: NgForm) {
+
+    // var obj = {
+    //   title: form.controls.title.value,
+    //   content: form.controls.content.value
+    // };
+
+    //  console.dir(obj);
+    // this.service.save(this.blog)
+    //   .subscribe(
+    //   () => {
+    //     this.saveSuccess = true;
+    //     this.getBlogs();
+    //     this.clearAll();
+    //   },
+    //   () => this.saveFailed = true
+    //   )
+  }
+
   private getBlogs() {
     this.service.get(this.pageIndex, this.pageSize)
       .subscribe(response => {
@@ -42,6 +66,10 @@ export class BlogListComponent implements OnInit {
 
   disableNext() {
     this.pageIndex >= this.metadata.pages - 1;
+  }
+
+  clearAll() {
+    this.blog = {};
   }
 
 }
