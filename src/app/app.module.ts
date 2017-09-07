@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -9,13 +10,27 @@ import { AboutComponent } from './about/about.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogComponent } from './blog/blog.component';
 import { BlogService } from "./shared/blog.service";
-import { TimePipe } from "./shared/time.pipe";
+import { SharedModule } from "./shared/shared.module";
+import { HeaderComponent } from "./header/header.component";
+import { NewBlogComponent } from "./new-blog/new-blog.component";
+import { BlogDetailComponent } from "./blog-detail/blog-detail.component";
+
+
+const routes = [
+    { path: '', component: HomeComponent },
+    { path: 'blogs', component: BlogListComponent },
+    { path: 'blogs/new', component: NewBlogComponent },
+    { path: 'blog/:id', component: BlogDetailComponent },
+    { path: 'about', component: AboutComponent },
+    { path: '**', component: HomeComponent }
+];
 
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpModule],
-    declarations: [AppComponent, HomeComponent, AboutComponent, BlogListComponent, BlogComponent,TimePipe],
+    imports: [BrowserModule, FormsModule, HttpModule, SharedModule, RouterModule.forRoot(routes)],
+    declarations: [AppComponent, HomeComponent, AboutComponent,
+        BlogListComponent, BlogComponent, HeaderComponent, NewBlogComponent,BlogDetailComponent],
     bootstrap: [AppComponent],
-    providers: [BlogService]
+    providers: []
 })
 export class AppModule { }

@@ -16,4 +16,8 @@ export class BlogService {
     save(blog: any) {
         return this.http.post(`${this.baseUrl}/blogs`, blog);
     }
+
+    getById(id:string){
+         return this.http.get(`${this.baseUrl}/blogs/${id}`);
+    }
 }

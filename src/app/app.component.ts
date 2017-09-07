@@ -1,9 +1,20 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    template:`
-        <app-blog-list></app-blog-list>
+    template: `
+
+      <header>
+        <app-header></app-header>
+      </header>
+
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+
+      <footer>
+        &copy;mycoolblogs@2017.com
+      </footer>
     `,
-    selector:'app'
+    selector: 'app'
 })
-export class AppComponent{}
+export class AppComponent { }

@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
     selector: 'app-blog',
     template: `
     <div>
-       <h3>{{blog.title | uppercase}}</h3>
+       <a routerLink="/blog/{{blog._id}}"><h3>{{blog.title | uppercase}}</h3></a>
        <p>{{blog.content}}</p>
        <div>IsPublished: <input type="checkbox" [(ngModel)]="blog.published"/></div>
        <hr/>
