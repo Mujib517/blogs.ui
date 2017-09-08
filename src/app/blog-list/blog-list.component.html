@@ -29,7 +29,7 @@
   <div *ngIf="failed" class="alert alert-danger">
     Failed to load data. Please try again
   </div>
-  <div class="well" *ngFor="let blog of blogs | slice:0:3">
+  <div class="well" *ngFor="let blog of blogs">
     <app-blog [blog]="blog"></app-blog>
   </div>
 </div>

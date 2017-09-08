@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from "../shared/blog.service";
 import { NgForm } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-blog-list',
@@ -16,11 +17,20 @@ export class BlogListComponent implements OnInit {
   saveFailed: boolean = false;
   saveSuccess: boolean = false;
 
-  constructor(private service: BlogService) { }
+  constructor(private service: BlogService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.blog = {};
-    this.getBlogs();
+    this.getResolverData();
+    //this.getBlogs();
+  }
+
+  private getResolverData() {
+    let response = this.route.snapshot.data["blogs"];
+
+    let parsedResult = JSON.parse(response._body);
+    this.blogs = parsedResult.data;
+    this.metadata = parsedResult.metadata;
   }
 
   next() {
@@ -35,7 +45,7 @@ export class BlogListComponent implements OnInit {
     this.getBlogs();
   }
 
- 
+
   private getBlogs() {
     this.service.get(this.pageIndex, this.pageSize)
       .subscribe(response => {

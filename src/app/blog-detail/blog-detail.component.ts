@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from "../shared/blog.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-blog-detail',
   template: `
+
+  <div *ngIf="!loaded">
+    Loading....
+  </div>
+
      <div>
        <h3>{{blog.title | uppercase}}</h3>
        <p>{{blog.content}}</p>
@@ -27,15 +33,18 @@ import { BlogService } from "../shared/blog.service";
 })
 export class BlogDetailComponent implements OnInit {
 
-  blog: any={};
+  blog: any = {};
+  loaded: boolean = false;
 
-  constructor(private blogSvc: BlogService) { }
+  constructor(private blogSvc: BlogService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.blogSvc.getById("597800e668f3662f785f55a3")
+    this.blogSvc.getById(this.route.snapshot.params.id)
       .subscribe(
-        (response) => this.blog = response.json()
+      (response) => {
+        this.blog = response.json();
+        this.loaded = true;
+      }
       )
   }
-
 }
