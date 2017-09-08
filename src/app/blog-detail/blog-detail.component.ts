@@ -34,7 +34,7 @@ export class BlogDetailComponent implements OnInit {
   ngOnInit() {
     this.blogSvc.getById("597800e668f3662f785f55a3")
       .subscribe(
-      (response) => this.blog = response.json()
+        (response) => this.blog = response.json()
       )
   }
 
