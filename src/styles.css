@@ -8,9 +8,9 @@
 
 input.ng-invalid,
 textarea.ng-invalid{
-    border:1px solid red;
+    border-left:3px solid brown;
 }
 input.ng-valid,
 textarea.ng-valid{
-    border:1px solid green;
+    border-left:3px solid green;
 }

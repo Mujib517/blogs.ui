@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from "../shared/blog.service";
 import { ActivatedRoute } from "@angular/router";
+import { Blog } from "../shared/blog.model";
 
 @Component({
   selector: 'app-blog-detail',
@@ -33,7 +34,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class BlogDetailComponent implements OnInit {
 
-  blog: any = {};
+  blog: Blog=new Blog();
   loaded: boolean = false;
 
   constructor(private blogSvc: BlogService, private route: ActivatedRoute) { }
@@ -43,6 +44,7 @@ export class BlogDetailComponent implements OnInit {
       .subscribe(
       (response) => {
         this.blog = response.json();
+        console.log(this.blog);
         this.loaded = true;
       }
       )

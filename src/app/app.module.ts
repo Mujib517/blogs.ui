@@ -15,6 +15,7 @@ import { HeaderComponent } from "./header/header.component";
 import { NewBlogComponent } from "./new-blog/new-blog.component";
 import { BlogDetailComponent } from "./blog-detail/blog-detail.component";
 import { BlogResolver } from "./shared/blog.resolver";
+import { FooterComponent } from './footer/footer.component';
 
 
 const routes = [
@@ -30,7 +31,7 @@ const routes = [
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpModule, SharedModule, RouterModule.forRoot(routes)],
     declarations: [AppComponent, HomeComponent, AboutComponent,
-        BlogListComponent, BlogComponent, HeaderComponent, NewBlogComponent, BlogDetailComponent],
+        BlogListComponent, BlogComponent, HeaderComponent, NewBlogComponent, BlogDetailComponent, FooterComponent],
     bootstrap: [AppComponent],
     providers: [BlogService]
 })

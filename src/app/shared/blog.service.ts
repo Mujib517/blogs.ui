@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/retry';
 
 @Injectable()
 export class BlogService {
@@ -10,14 +11,15 @@ export class BlogService {
 
     get(pageIndex: number, pageSize: number) {
         // return this.http.get('http://localhost:3000/blogs/' + pageIndex + '/' + pageSize);
-        return this.http.get(`${this.baseUrl}/blogs/${pageIndex}/${pageSize}`);
+        return this.http.get(`${this.baseUrl}/blogs1/${pageIndex}/${pageSize}`)
+            .retry(4);
     }
 
     save(blog: any) {
         return this.http.post(`${this.baseUrl}/blogs`, blog);
     }
 
-    getById(id:string){
-         return this.http.get(`${this.baseUrl}/blogs/${id}`);
+    getById(id: string) {
+        return this.http.get(`${this.baseUrl}/blogs/${id}`);
     }
 }

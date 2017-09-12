@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 
 @Component({
-    template: `
+  template: `
 
       <header>
         <app-header></app-header>
       </header>
 
       <main>
+      <div class="container">
         <router-outlet></router-outlet>
+      </div>
       </main>
-
-      <footer>
-        &copy;mycoolblogs@2017.com
-      </footer>
+      
+      <app-footer></app-footer>
     `,
-    selector: 'app'
+  selector: 'app'
 })
 export class AppComponent { }

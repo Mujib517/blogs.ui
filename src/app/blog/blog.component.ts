@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Blog } from "../shared/blog.model";
 
 
 @Component({
@@ -17,8 +18,6 @@ import { Component, Input } from '@angular/core';
 })
 export class BlogComponent {
 
-    myObj:any;
-
-    @Input() blog: any;
+    @Input() blog: Blog;
     constructor() { }
 }

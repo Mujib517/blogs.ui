@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { BlogService } from "../shared/blog.service";
 import { Router } from "@angular/router";
+import { Blog } from "../shared/blog.model";
 
 @Component({
-    template: `
+  template: `
     <div class="row">
 
   <div *ngIf="saveFailed" class="alert alert-danger">Failed to save data</div>
@@ -26,27 +27,6 @@ import { Router } from "@angular/router";
         <span *ngIf="ctrlTitle.dirty && ctrlTitle.errors?.required" class="text-danger">Required</span>
         <span *ngIf="ctrlTitle.dirty && ctrlTitle.errors?.minlength" class="text-danger">Min 4 chars</span>
         <span *ngIf="ctrlTitle.dirty &&  ctrlTitle.errors?.maxlength" class="text-danger">Max 10 chars</span>
-
-
-        <table class="table table-bordered">
-          <tr>
-            <td>Element</td>
-            <td>Invalid</td>
-            <td>Valid</td>
-            <td>Pristine</td>
-            <td>Dirty</td>
-            <td>Touched</td>
-          </tr>
-          <tr>
-            <td>Title</td>
-            <td>{{ctrlTitle.invalid}}</td>
-            <td>{{ctrlTitle.valid}}</td>
-            <td>{{ctrlTitle.pristine}}</td>
-            <td>{{ctrlTitle.dirty}}</td>
-            <td>{{ctrlTitle.touched}}</td>
-          </tr>
-        </table>
-
 
       </div>
       <div class="form-group">
@@ -72,27 +52,27 @@ import { Router } from "@angular/router";
 })
 export class NewBlogComponent {
 
-    saveSuccess: boolean = false;
-    saveFailed: boolean = false;
-    blog: any;
+  saveSuccess: boolean = false;
+  saveFailed: boolean = false;
+  blog: Blog;
 
-    constructor(private service: BlogService,private route:Router) {
-        this.blog = {};
-    }
+  constructor(private service: BlogService, private route: Router) {
+    this.blog = new Blog();
+  }
 
-    onSave() {
-        this.service.save(this.blog)
-            .subscribe(
-            () => {
-                this.saveSuccess = true;
-                this.clearAll();
-                this.route.navigate(['/blogs']);
-            },
-            () => this.saveFailed = true
-            )
-    }
+  onSave() {
+    this.service.save(this.blog)
+      .subscribe(
+      () => {
+        this.saveSuccess = true;
+        this.clearAll();
+        this.route.navigate(['/blogs']);
+      },
+      () => this.saveFailed = true
+      )
+  }
 
-    clearAll() {
-        this.blog = {};
-    }
+  clearAll() {
+    this.blog = new Blog();
+  }
 }  

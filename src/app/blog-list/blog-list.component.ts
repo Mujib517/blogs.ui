@@ -2,27 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from "../shared/blog.service";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { Blog } from "../shared/blog.model";
 
 @Component({
   selector: 'app-blog-list',
   templateUrl: './blog-list.component.html'
 })
 export class BlogListComponent implements OnInit {
-  blogs: Array<any> = [];
+  blogs: Array<Blog> = [];
   metadata: any;
   failed: boolean = false;
   pageIndex: number = 0;
   pageSize: number = 10;
-  blog: any;
-  saveFailed: boolean = false;
-  saveSuccess: boolean = false;
 
   constructor(private service: BlogService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.blog = {};
     this.getResolverData();
-    //this.getBlogs();
   }
 
   private getResolverData() {
@@ -58,6 +54,10 @@ export class BlogListComponent implements OnInit {
 
   disableNext() {
     this.pageIndex >= this.metadata.pages - 1;
+  }
+
+  onPageSizeChanged() {
+    this.getBlogs();
   }
 
 }
