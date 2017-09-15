@@ -11,7 +11,7 @@ export class BlogService {
 
     get(pageIndex: number, pageSize: number) {
         // return this.http.get('http://localhost:3000/blogs/' + pageIndex + '/' + pageSize);
-        return this.http.get(`${this.baseUrl}/blogs1/${pageIndex}/${pageSize}`)
+        return this.http.get(`${this.baseUrl}/blogs/${pageIndex}/${pageSize}`)
             .retry(4);
     }
 
@@ -21,5 +21,9 @@ export class BlogService {
 
     getById(id: string) {
         return this.http.get(`${this.baseUrl}/blogs/${id}`);
+    }
+
+    remove(id:string){
+         return this.http.delete(`${this.baseUrl}/blogs/${id}`);
     }
 }

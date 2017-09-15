@@ -4,18 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { BlogListComponent } from './blog-list/blog-list.component';
-import { BlogComponent } from './blog/blog.component';
-import { BlogService } from "./shared/blog.service";
-import { SharedModule } from "./shared/shared.module";
-import { HeaderComponent } from "./header/header.component";
-import { NewBlogComponent } from "./new-blog/new-blog.component";
-import { BlogDetailComponent } from "./blog-detail/blog-detail.component";
-import { BlogResolver } from "./shared/blog.resolver";
-import { FooterComponent } from './footer/footer.component';
+import { AppComponent, HomeComponent, NewBlogComponent, BlogDetailComponent, AboutComponent, BlogListComponent, BlogResolver, SharedModule, BlogComponent, HeaderComponent, FooterComponent, BlogService }
+    from './component.barrel';
 
 
 const routes = [

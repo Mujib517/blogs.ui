@@ -60,6 +60,11 @@ export class BlogListComponent implements OnInit {
     this.getBlogs();
   }
 
+  onNotification(event) {
+    console.log(event);
+    this.getBlogs();
+  }
+
 }
 
 

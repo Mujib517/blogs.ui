@@ -30,7 +30,7 @@
     Failed to load data. Please try again
   </div>
   <div class="well" *ngFor="let blog of blogs">
-    <app-blog [blog]="blog"></app-blog>
+    <app-blog [blog]="blog" (notify)="onNotification($event)"></app-blog>
   </div>
 </div>
 
