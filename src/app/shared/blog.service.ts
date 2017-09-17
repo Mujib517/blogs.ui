@@ -12,7 +12,7 @@ export class BlogService {
     get(pageIndex: number, pageSize: number) {
         // return this.http.get('http://localhost:3000/blogs/' + pageIndex + '/' + pageSize);
         return this.http.get(`${this.baseUrl}/blogs/${pageIndex}/${pageSize}`)
-            .retry(4);
+            //.retry(4);
     }
 
     save(blog: any) {

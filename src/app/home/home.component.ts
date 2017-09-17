@@ -13,13 +13,13 @@ export class HomeComponent {
 
     constructor() {
 
-        setInterval(
-            () => {
-                this.myProperty++;
-            },
+        // setInterval(
+        //     () => {
+        //         this.myProperty++;
+        //     },
 
-            1000
-        )
+        //     1000
+        // )
     }
 
     changeValue() {

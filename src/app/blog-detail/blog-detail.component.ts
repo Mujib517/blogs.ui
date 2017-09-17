@@ -34,7 +34,7 @@ import { Blog } from "../shared/blog.model";
 })
 export class BlogDetailComponent implements OnInit {
 
-  blog: Blog=new Blog();
+  blog: Blog = new Blog();
   loaded: boolean = false;
 
   constructor(private blogSvc: BlogService, private route: ActivatedRoute) { }
